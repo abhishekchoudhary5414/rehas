@@ -6,6 +6,7 @@ import { ChevronRight, ArrowBack, FavoriteBorder, PhoneInTalk, Mail, CheckCircle
 import { useCheckout, CartItem } from '@/context/CheckoutContext';
 import { useAuth, UserAddress } from '@/context/AuthContext';
 import { supabase } from '@/lib/supabase';
+import { countryCodes } from '@/data/countryCodes';
 import PaymentForm from '../paymentForm/paymentForm';
 import styles from './enhancedCheckoutForm.module.css';
 
@@ -71,6 +72,7 @@ const INDIAN_STATES = [
 interface FormData {
   fullName: string;
   email: string;
+  countryCode: string;
   phoneNumber: string;
   addressLine1: string;
   addressLine2: string;
@@ -107,6 +109,7 @@ export default function EnhancedCheckoutForm({ productTitle, amount = 999, isPro
   const [formData, setFormData] = useState<FormData>({
     fullName: orderData?.fullName || '',
     email: orderData?.email || '',
+    countryCode: '+91',
     phoneNumber: orderData?.phoneNumber || '',
     addressLine1: orderData?.addressLine1 || '',
     addressLine2: orderData?.addressLine2 || '',
@@ -121,6 +124,7 @@ export default function EnhancedCheckoutForm({ productTitle, amount = 999, isPro
       setFormData({
         fullName: orderData.fullName || '',
         email: orderData.email || '',
+        countryCode: '+91',
         phoneNumber: orderData.phoneNumber || '',
         addressLine1: orderData.addressLine1 || '',
         addressLine2: orderData.addressLine2 || '',
@@ -221,9 +225,9 @@ export default function EnhancedCheckoutForm({ productTitle, amount = 999, isPro
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     let { name, value } = e.target;
 
-    // Phone validation: only digits, max 10
+    // Phone validation: allow digits (up to 15 digits for international numbers)
     if (name === 'phoneNumber') {
-      value = value.replace(/\D/g, '').slice(0, 10);
+      value = value.replace(/\D/g, '').slice(0, 15);
     }
 
     setFormData((prev) => ({
@@ -242,17 +246,18 @@ export default function EnhancedCheckoutForm({ productTitle, amount = 999, isPro
 
   const handleAddressSelect = (address: UserAddress) => {
     setSelectedAddressId(address.id);
-    setFormData({
-      fullName: address.full_name || formData.fullName || user?.fullName || '',
-      email: address.email || formData.email || user?.email || '',
-      phoneNumber: address.phone_number || formData.phoneNumber || user?.phone || '',
+    setFormData((prev) => ({
+      ...prev,
+      fullName: address.full_name || prev.fullName || user?.fullName || '',
+      email: address.email || prev.email || user?.email || '',
+      phoneNumber: address.phone_number || prev.phoneNumber || user?.phone || '',
       addressLine1: address.address_line_1,
       addressLine2: address.address_line_2 || '',
       city: address.city,
       state: address.state,
       postalCode: address.postal_code,
-      country: address.country || formData.country || 'India',
-    });
+      country: address.country || prev.country || 'India',
+    }));
     setAddressMode('saved');
     setShowNewAddressForm(false);
     setErrors((prev) => ({
@@ -352,10 +357,14 @@ export default function EnhancedCheckoutForm({ productTitle, amount = 999, isPro
 
     if (!formData.phoneNumber) {
       newErrors.phoneNumber = 'Phone number is required';
-    } else if (formData.phoneNumber.length !== 10) {
-      newErrors.phoneNumber = 'Phone number must be exactly 10 digits';
-    } else if (!/^[6-9]/.test(formData.phoneNumber)) {
-      newErrors.phoneNumber = 'Phone number must start with 6, 7, 8, or 9';
+    } else if (formData.countryCode === '+91') {
+      if (formData.phoneNumber.length !== 10) {
+        newErrors.phoneNumber = 'Indian phone numbers must be exactly 10 digits';
+      } else if (!/^[6-9]/.test(formData.phoneNumber)) {
+        newErrors.phoneNumber = 'Phone number must start with 6, 7, 8, or 9';
+      }
+    } else if (formData.phoneNumber.length < 6 || formData.phoneNumber.length > 15) {
+      newErrors.phoneNumber = 'Please enter a valid phone number';
     }
 
     if (!acceptTerms) {
@@ -409,6 +418,8 @@ export default function EnhancedCheckoutForm({ productTitle, amount = 999, isPro
     setLoading(true);
     setErrors({});
 
+    const formattedPhoneNumber = `${formData.countryCode} ${formData.phoneNumber.trim()}`;
+
     try {
       let createdId: number | null = null;
 
@@ -418,7 +429,7 @@ export default function EnhancedCheckoutForm({ productTitle, amount = 999, isPro
           .update({
             full_name: formData.fullName,
             email: formData.email,
-            phone_number: formData.phoneNumber,
+            phone_number: formattedPhoneNumber,
             address_line_1: formData.addressLine1,
             address_line_2: formData.addressLine2,
             city: formData.city,
@@ -454,7 +465,7 @@ export default function EnhancedCheckoutForm({ productTitle, amount = 999, isPro
           body: JSON.stringify({
             fullName: formData.fullName,
             email: formData.email,
-            phoneNumber: formData.phoneNumber,
+            phoneNumber: formattedPhoneNumber,
             addressLine1: formData.addressLine1,
             addressLine2: formData.addressLine2,
             city: formData.city,
@@ -543,7 +554,7 @@ export default function EnhancedCheckoutForm({ productTitle, amount = 999, isPro
               </div>
               <div className={styles.detailItem}>
                 <span className={styles.detailLabel}>Phone</span>
-                <span className={styles.detailValue}>+91 {formData.phoneNumber}</span>
+                <span className={styles.detailValue}>{formData.countryCode} {formData.phoneNumber}</span>
               </div>
               <div className={styles.detailItem}>
                 <span className={styles.detailLabel}>Product/Service</span>
@@ -603,7 +614,7 @@ export default function EnhancedCheckoutForm({ productTitle, amount = 999, isPro
         amount={totalAmount}
         customerEmail={formData.email}
         customerName={formData.fullName}
-        customerPhone={formData.phoneNumber}
+        customerPhone={`${formData.countryCode} ${formData.phoneNumber}`}
         onPaymentSuccess={handlePaymentSuccess}
       />
     );
@@ -717,16 +728,33 @@ export default function EnhancedCheckoutForm({ productTitle, amount = 999, isPro
 
               <div className={styles.formGroup} style={{ flex: 1 }}>
                 <label htmlFor="phoneNumber">Phone Number *</label>
-                <input
-                  type="tel"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  value={formData.phoneNumber}
-                  onChange={handleChange}
-                  placeholder="10-digit number"
-                  maxLength={10}
-                  className={errors.phoneNumber ? styles.inputError : ''}
-                />
+                <div className={styles.phoneInputWrapper}>
+                  <select
+                    id="checkoutCountryCode"
+                    name="countryCode"
+                    value={formData.countryCode}
+                    onChange={handleChange}
+                    className={styles.countryCodeSelect}
+                    disabled={loading || submitted || savingAddress}
+                    aria-label="Country Code"
+                  >
+                    {countryCodes.map((item) => (
+                      <option key={item.code + item.name} value={item.code}>
+                        {item.flag} {item.code}
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    type="tel"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    placeholder="Phone number"
+                    className={errors.phoneNumber ? styles.inputError : ''}
+                    disabled={loading || submitted || savingAddress}
+                  />
+                </div>
                 {errors.phoneNumber && <span className={styles.errorText}>{errors.phoneNumber}</span>}
               </div>
             </div>

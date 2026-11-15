@@ -208,6 +208,35 @@
   transition: all 0.3s ease;
 }
 
+/* Phone input with country code */
+.phoneInputWrapper {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.countryCodeSelect {
+  width: 120px !important;
+  max-width: 130px;
+  flex: 0 0 120px;
+  padding: 13px 8px !important;
+  border: 2px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 13px !important;
+  color: #333;
+  background: #fafafa;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.phoneInputWrapper input {
+  flex: 1 1 auto !important;
+  width: auto !important;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
 .formGroup input::placeholder {
   color: #bbb;
 }

@@ -46,8 +46,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Validate phone number
-    if (phoneNumber.length !== 10 || !/^[6-9]/.test(phoneNumber)) {
+    // Validate phone number (allow international with country code or standard 7-15 digits)
+    const digitsOnly = String(phoneNumber).replace(/\D/g, '');
+    if (digitsOnly.length < 7 || digitsOnly.length > 15) {
       return NextResponse.json(
         { error: 'Invalid phone number' },
         { status: 400 }
