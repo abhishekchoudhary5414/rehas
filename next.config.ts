@@ -54,19 +54,7 @@ const nextConfig: NextConfig = {
 
   // =========== REDIRECTS ===========
   async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.rehas.in',
-          },
-        ],
-        destination: 'https://www.rehas.in/:path*',
-        permanent: true,
-      },
-    ];
+    return [];
   },
 
   // =========== BUILD OPTIMIZATION ===========
