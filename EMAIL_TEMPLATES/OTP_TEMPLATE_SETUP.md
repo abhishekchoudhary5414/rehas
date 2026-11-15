@@ -99,7 +99,7 @@ Change the logo emoji or text:
 ### Company Details
 Update footer with your info:
 - Email: `support@rehas.com`
-- Website: `https://rehas.in`
+- Website: `https://www.rehas.in`
 - Phone: Add if needed
 
 ### Expiration Time

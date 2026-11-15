@@ -105,6 +105,30 @@
   color: #333;
 }
 
+/* Phone Input with Country Code */
+.phoneInputWrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.countryCodeSelect {
+  width: 140px;
+  flex-shrink: 0;
+  padding: 0.875rem 0.5rem !important;
+  font-size: 0.9rem !important;
+  border: 2px solid rgba(86, 0, 103, 0.1);
+  border-radius: 12px;
+  background: white;
+  color: #333;
+  cursor: pointer;
+}
+
+.phoneInputWrapper input {
+  flex: 1;
+  min-width: 0;
+}
+
 .formGroup input:focus,
 .formGroup select:focus {
   outline: none;

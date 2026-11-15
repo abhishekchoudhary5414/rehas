@@ -58,7 +58,7 @@ export default function PrivacyPolicy() {
       content: [
         'You have the right to access, update, or delete your personal information at any time.',
         'You can opt out of promotional communications by clicking the unsubscribe link in our emails.',
-        'To exercise these rights, please contact us at privacy@rehas.com.',
+        'To exercise these rights, please contact us at contact@rehas.in.',
       ],
     },
     {

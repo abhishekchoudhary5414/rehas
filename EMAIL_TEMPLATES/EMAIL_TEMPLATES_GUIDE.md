@@ -52,7 +52,7 @@ user_email: user@example.com
 **Test:**
 ```
 to_email: your-email@example.com
-reset_link: https://rehas.in/auth?reset=true&token=abc123&email=user@example.com
+reset_link: https://www.rehas.in/auth?reset=true&token=abc123&email=user@example.com
 ```
 
 ## Template Structure
@@ -90,7 +90,7 @@ Both templates include:
 
 **Variables Used:**
 ```
-{{reset_link}}   → Full reset URL (e.g., "https://rehas.in/auth?reset=true&token=...")
+{{reset_link}}   → Full reset URL (e.g., "https://www.rehas.in/auth?reset=true&token=...")
 {{to_email}}     → Recipient email
 ```
 
@@ -147,7 +147,7 @@ Find and replace: `support@rehas.com`
 ### Change Company Info
 Update footer section:
 ```html
-<a href="https://rehas.in" class="footer-link">Visit Website</a> | 
+<a href="https://www.rehas.in" class="footer-link">Visit Website</a> | 
 <a href="mailto:contact@rehas.in" class="footer-link">Contact Us</a>
 ```
 
@@ -236,7 +236,7 @@ NEXT_PUBLIC_EMAILJS_PASSWORD_RESET_TEMPLATE_ID=...
 // Password Reset Email
 {
   to_email: "user@example.com",
-  reset_link: "https://rehas.in/auth?reset=true&token=uuid&email=user@example.com"
+  reset_link: "https://www.rehas.in/auth?reset=true&token=uuid&email=user@example.com"
 }
 ```
 

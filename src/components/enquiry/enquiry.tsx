@@ -6,11 +6,13 @@ import { supabase } from '@/lib/supabase';
 
 import LineArtBackground from '@/components/lineArtBackground';
 import { servicesData } from '@/data/services';
+import { countryCodes } from '@/data/countryCodes';
 import styles from './enquiry.module.css';
 
 export default function Enquiry() {
   const [formData, setFormData] = useState({
     name: '',
+    countryCode: '+91',
     number: '',
     serviceType: '',
   });
@@ -51,13 +53,15 @@ export default function Enquiry() {
     setLoading(true);
     setError('');
 
+    const formattedPhone = `${formData.countryCode} ${formData.number.trim()}`;
+
     try {
       const { error: insertError } = await supabase
         .from('enquiries')
         .insert([
           {
             name: formData.name,
-            phone: formData.number,
+            phone: formattedPhone,
             service_type: formData.serviceType,
             status: 'new',
             submitted_from: 'page',
@@ -71,7 +75,7 @@ export default function Enquiry() {
 
       // Success
       setSubmitted(true);
-      setFormData({ name: '', number: '', serviceType: '' });
+      setFormData({ name: '', countryCode: '+91', number: '', serviceType: '' });
       
       // Hide success message after 5 seconds
       setTimeout(() => setSubmitted(false), 5000);
@@ -136,15 +140,32 @@ export default function Enquiry() {
                 {/* Phone Number Field */}
                 <div className={styles.formGroup}>
                   <label htmlFor="number">Phone Number *</label>
-                  <input
-                    id="number"
-                    type="tel"
-                    name="number"
-                    value={formData.number}
-                    onChange={handleChange}
-                    placeholder="Enter your phone number"
-                    disabled={loading}
-                  />
+                  <div className={styles.phoneInputWrapper}>
+                    <select
+                      id="enquiryCountryCode"
+                      name="countryCode"
+                      value={formData.countryCode}
+                      onChange={handleChange}
+                      className={styles.countryCodeSelect}
+                      disabled={loading}
+                      aria-label="Country Code"
+                    >
+                      {countryCodes.map((item) => (
+                        <option key={item.code + item.name} value={item.code}>
+                          {item.flag} {item.code} ({item.name.slice(0, 10)})
+                        </option>
+                      ))}
+                    </select>
+                    <input
+                      id="number"
+                      type="tel"
+                      name="number"
+                      value={formData.number}
+                      onChange={handleChange}
+                      placeholder="Enter your phone number"
+                      disabled={loading}
+                    />
+                  </div>
                 </div>
 
                 {/* Service Type Field */}

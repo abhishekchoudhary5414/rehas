@@ -57,14 +57,14 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/:path*',
-        destination: '/:path*',
-        permanent: true,
         has: [
           {
             type: 'host',
             value: 'www.rehas.in',
           },
         ],
+        destination: 'https://www.rehas.in/:path*',
+        permanent: true,
       },
     ];
   },

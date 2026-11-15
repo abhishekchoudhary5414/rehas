@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Close, Send, CheckCircle } from '@mui/icons-material';
 import { supabase } from '@/lib/supabase';
 import { servicesData } from '@/data/services';
+import { countryCodes } from '@/data/countryCodes';
 import styles from './enquiryModal.module.css';
 
 interface EnquiryModalProps {
@@ -15,6 +16,7 @@ export default function EnquiryModal({ isOpen, onClose }: EnquiryModalProps) {
   const modalRef = useRef<HTMLDivElement | null>(null);
   const [formData, setFormData] = useState({
     name: '',
+    countryCode: '+91',
     number: '',
     serviceType: '',
   });
@@ -73,13 +75,15 @@ export default function EnquiryModal({ isOpen, onClose }: EnquiryModalProps) {
     setLoading(true);
     setError('');
 
+    const formattedPhone = `${formData.countryCode} ${formData.number.trim()}`;
+
     try {
       const { error: insertError } = await supabase
         .from('enquiries')
         .insert([
           {
             name: formData.name,
-            phone: formData.number,
+            phone: formattedPhone,
             service_type: formData.serviceType,
             status: 'new',
             submitted_from: 'popup',
@@ -93,7 +97,7 @@ export default function EnquiryModal({ isOpen, onClose }: EnquiryModalProps) {
 
       // Success
       setSubmitted(true);
-      setFormData({ name: '', number: '', serviceType: '' });
+      setFormData({ name: '', countryCode: '+91', number: '', serviceType: '' });
       
       // Close modal after 3 seconds
       setTimeout(() => {
@@ -166,15 +170,32 @@ export default function EnquiryModal({ isOpen, onClose }: EnquiryModalProps) {
               {/* Phone Number Field */}
               <div className={styles.formGroup}>
                 <label htmlFor="number">Phone Number *</label>
-                <input
-                  id="number"
-                  type="tel"
-                  name="number"
-                  value={formData.number}
-                  onChange={handleChange}
-                  placeholder="Your phone number"
-                  disabled={loading}
-                />
+                <div className={styles.phoneInputWrapper}>
+                  <select
+                    id="countryCode"
+                    name="countryCode"
+                    value={formData.countryCode}
+                    onChange={handleChange}
+                    className={styles.countryCodeSelect}
+                    disabled={loading}
+                    aria-label="Country Code"
+                  >
+                    {countryCodes.map((item) => (
+                      <option key={item.code + item.name} value={item.code}>
+                        {item.flag} {item.code} ({item.name.slice(0, 10)})
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    id="number"
+                    type="tel"
+                    name="number"
+                    value={formData.number}
+                    onChange={handleChange}
+                    placeholder="Enter phone number"
+                    disabled={loading}
+                  />
+                </div>
               </div>
 
               {/* Service Type Field */}

@@ -120,7 +120,7 @@ export const rehasData = {
     twitter: 'https://twitter.com/rudraaabhisingh',
     facebook: 'https://facebook.com/rehascosmic',
     youtube: 'https://youtube.com/@rehascosmic',
-    website: 'https://rehas.com',
+    website: 'https://www.rehas.in',
     email: 'contact@rehas.in',
     phone: '+91-9517973153',
     whatsapp: '919517973153',

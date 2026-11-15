@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     question: 'How do I contact customer support?',
-    answer: 'You can reach our support team through: Email: support@rehas.com, Phone: +1 (234) 567-890, or by filling out our contact form on the Contact Us page.',
+    answer: 'You can reach our support team through: Email: contact@rehas.in, Phone: +91 9517973153, or by filling out our contact form on the Contact Us page.',
   },
   {
     question: 'Do you offer group sessions or workshops?',

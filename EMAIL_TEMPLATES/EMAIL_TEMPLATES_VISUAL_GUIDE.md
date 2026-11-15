@@ -80,7 +80,7 @@ account. Click the button below to create a new password.
 │      [Reset Password Button]           │
 │                                        │
 │  Or copy this link:                    │
-│  https://rehas.in/auth?reset=true...   │
+│  https://www.rehas.in/auth?reset=true...   │
 │                                        │
 └────────────────────────────────────────┘
 
@@ -141,7 +141,7 @@ Visit Website | Contact Us
 
 | Variable | Purpose | Example | Replaced At |
 |----------|---------|---------|-------------|
-| `{{reset_link}}` | Full reset URL | `https://rehas.in/auth?reset=true&token=...` | API send time |
+| `{{reset_link}}` | Full reset URL | `https://www.rehas.in/auth?reset=true&token=...` | API send time |
 | `{{to_email}}` | EmailJS recipient | `john@example.com` | API send time |
 
 ---
@@ -270,7 +270,7 @@ Images scale proportionally
 <!-- To: -->
 <div class="logo">REHAS Wellness</div>
 <!-- Or: -->
-<img src="https://rehas.in/logo.png" alt="REHAS" style="height: 50px;">
+<img src="https://www.rehas.in/logo.png" alt="REHAS" style="height: 50px;">
 ```
 
 ### Change Support Email

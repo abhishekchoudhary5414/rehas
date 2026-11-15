@@ -12,11 +12,13 @@ import { supabase } from '@/lib/supabase';
 
 import LineArtBackground from '../lineArtBackground/lineArtBackground';
 import { contactData } from '@/data/content';
+import { countryCodes } from '@/data/countryCodes';
 import styles from './contact.module.css';
 
 export default function Contact() {
     const [formData, setFormData] = useState({
         name: '',
+        countryCode: '+91',
         phone: '',
         message: '',
     });
@@ -40,6 +42,8 @@ export default function Contact() {
         setLoading(true);
         setError('');
 
+        const formattedPhone = formData.phone.trim() ? `${formData.countryCode} ${formData.phone.trim()}` : '';
+
         try {
             // Insert contact submission into Supabase
             const { data, error: insertError } = await supabase
@@ -47,7 +51,7 @@ export default function Contact() {
                 .insert([
                     {
                         name: formData.name,
-                        phone: formData.phone,
+                        phone: formattedPhone,
                         message: formData.message,
                         status: 'new',
                     },
@@ -60,7 +64,7 @@ export default function Contact() {
 
             // Success
             setSubmitted(true);
-            setFormData({ name: '', phone: '', message: '' });
+            setFormData({ name: '', countryCode: '+91', phone: '', message: '' });
             
             // Hide success message after 5 seconds
             setTimeout(() => setSubmitted(false), 5000);
@@ -160,6 +164,34 @@ export default function Contact() {
                                             placeholder={field.placeholder}
                                             rows={field.rows}
                                         />
+                                    ) : field.name === 'phone' ? (
+                                        <div className={styles.phoneInputWrapper}>
+                                            <select
+                                                id="contactCountryCode"
+                                                name="countryCode"
+                                                value={formData.countryCode}
+                                                onChange={handleChange}
+                                                className={styles.countryCodeSelect}
+                                                disabled={loading}
+                                                aria-label="Country Code"
+                                            >
+                                                {countryCodes.map((item) => (
+                                                    <option key={item.code + item.name} value={item.code}>
+                                                        {item.flag} {item.code} ({item.name.slice(0, 10)})
+                                                    </option>
+                                                ))}
+                                            </select>
+                                            <input
+                                                type={field.type}
+                                                id={field.name}
+                                                name={field.name}
+                                                value={formData.phone}
+                                                onChange={handleChange}
+                                                required={field.required}
+                                                placeholder={field.placeholder}
+                                                disabled={loading}
+                                            />
+                                        </div>
                                     ) : (
                                         <input
                                             type={field.type}

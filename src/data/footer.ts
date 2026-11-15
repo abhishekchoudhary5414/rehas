@@ -43,10 +43,10 @@ export const footerData = {
       links: [
         { label: 'Numerology', href: '/astrology/numerology' },
         { label: 'Vedic Astro', href: '/astrology/vedic' },
-        { label: 'Tarot Card', href: '/service/tarot' },
+        { label: 'Tarot Card', href: '/astrology/tarot' },
         { label: 'Cowrie Reading', href: '/astrology/cowrie-reading' },
-        { label: 'Palm Reading', href: '/service/palm-reading' },
-        { label: 'Kundli', href: '/service/kundli-analysis' },
+        { label: 'Palm Reading', href: '/astrology/palm-reading' },
+        { label: 'Kundli', href: '/astrology/kundli-analysis' },
       ],
     },
     {
