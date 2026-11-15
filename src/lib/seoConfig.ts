@@ -9,7 +9,7 @@ export const siteConfig = {
   description: 'Bridging ancient cosmic wisdom with modern wellness for a better tomorrow.',
   author: 'REHAS',
   logo: 'https://www.rehas.in/logo.png',
-  ogImage: 'https://www.rehas.in/logo.png',
+  ogImage: 'https://www.rehas.in/og-image.jpg',
   twitter: '@REHAS',
 };
 
@@ -70,10 +70,17 @@ export const createMetadata = (
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://www.rehas.in/#organization',
   name: 'REHAS',
+  alternateName: 'REHAS Wellness',
   url: siteConfig.domain,
   logo: siteConfig.logo,
   description: siteConfig.description,
+  founder: {
+    '@type': 'Person',
+    name: 'Rudra Aabhi Singh',
+    jobTitle: 'Founder & Spiritual Visionary',
+  },
   sameAs: [
     'https://www.facebook.com/rehas',
     'https://www.twitter.com/rehas',
@@ -83,13 +90,17 @@ export const organizationSchema = {
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'Customer Service',
-    email: 'support@rehas.in',
-    telephone: '+91-XXXXXXXXXX',
+    email: 'contact@rehas.in',
+    telephone: '+91-9517973153',
+    availableLanguage: ['English', 'Hindi'],
+    areaServed: 'Worldwide',
   },
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Cosmic Street',
-    addressLocality: 'India',
+    streetAddress: 'Chanakya Nagar Road, Agam Kua',
+    addressLocality: 'Patna',
+    addressRegion: 'Bihar',
+    postalCode: '800007',
     addressCountry: 'IN',
   },
 };
@@ -109,29 +120,34 @@ export const breadcrumbSchema = (items: { name: string; url: string }[]) => {
 
 export const localBusinessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'REHAS Wellness Center',
+  '@type': ['LocalBusiness', 'HealthAndBeautyBusiness'],
+  '@id': 'https://www.rehas.in/#localbusiness',
+  name: 'REHAS - Vedic Astrology, Healing & Wellness Center',
   image: siteConfig.logo,
   description: siteConfig.description,
   url: siteConfig.domain,
+  telephone: '+91-9517973153',
+  email: 'contact@rehas.in',
+  priceRange: '₹₹',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Cosmic Street',
-    addressLocality: 'India',
+    streetAddress: 'Chanakya Nagar Road, Agam Kua',
+    addressLocality: 'Patna',
+    addressRegion: 'Bihar',
+    postalCode: '800007',
     addressCountry: 'IN',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 25.5941,
+    longitude: 85.1376,
   },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: 'Monday',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       opens: '09:00',
-      closes: '18:00',
-    },
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: 'Friday',
-      opens: '09:00',
-      closes: '18:00',
+      closes: '21:00',
     },
   ],
   sameAs: [

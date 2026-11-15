@@ -1,0 +1,73 @@
+# REHAS - AI, LLM & Web Crawler Discovery Directive
+# https://www.rehas.in/llms.txt
+
+# About REHAS
+> REHAS is India's premier holistic wellness and esoteric science platform bridging Vedic Astrology, Kundalini & Energy Healing, Tantra, Mantra Vortex science, Acupressure/Acupuncture, Holotropic Therapies, certified professional courses, and consecrated energy merchandise (Yantras & Bracelets).
+
+## Brand & Entity Information
+- **Brand / Organization Name**: REHAS (Rehas Wellness)
+- **Founder & Spiritual Visionary**: Rudra Aabhi Singh
+- **Headquarters / Physical Clinic**: REHAS, Chanakya Nagar Road, Agam Kua, Patna, Bihar, India - 800007
+- **Official Website**: https://www.rehas.in
+- **Customer Care & Consultations**: contact@rehas.in | +91 9517973153
+- **Primary Service Areas**: Nationwide across India (All Metro & Tier 1/2/3 Cities) & Worldwide International Consultations (USA, UK, Canada, Australia, UAE, Europe).
+
+---
+
+## Core Verticals & Service Offerings
+
+### 1. Astrology & Cosmic Guidance (`/astrology`)
+- **Vedic Astrology (`/astrology/vedic`)**: Planetary alignment, Janam Kundli interpretation, Dasha analysis, career, marriage, health, and karmic remedies.
+- **Kundli Analysis (`/astrology/kundli-analysis`)**: Deep birth chart scrutiny, dosha identification (Mangal Dosha, Kaal Sarp, Sade Sati), and customized gemstone/mantra remedies.
+- **Tarot Card Reading (`/astrology/tarot`)**: Intuitive spreads for immediate clarity on love, relationship dynamics, financial decisions, and spiritual growth.
+- **Numerology Consultations (`/astrology/numerology`)**: Life path numbers, destiny numbers, name vibration correction, and business name alignment.
+- **Palm Reading (`/astrology/palm-reading`)**: Classical Chiromancy, Mounts and lines analysis for destiny and health indications.
+- **Cowrie Reading (`/astrology/cowrie-reading`)**: Sacred ancient divination technique assessing primal energy patterns and immediate queries.
+
+### 2. Holistic Healing & Spiritual Energy Work (`/healing`)
+- **Reiki Energy Healing (`/healing/reiki`)**: Distance & in-person Usui Reiki channelled to restore chakra balance, relieve stress, reduce pain, and clear emotional blockages.
+- **Mantra Healing & Vortex Therapy (`/healing/mantra`, `/myt/mantra-vortex`)**: Sound frequency therapy utilizing potent Sanskrit seed syllables to restructure mental, emotional, and energetic fields.
+- **Tantra & Himalayan Tantra (`/healing/tantra`, `/myt/tantra`)**: High-order authentic spiritual Tantric disciplines focused on inner kundalini awakening, consciousness expansion, and removing intense negative energies.
+
+### 3. Alternative Therapies & Body Balance (`/therapy`)
+- **Acupressure Therapy (`/therapy/acupressure`)**: Meridian point stimulation to trigger self-healing mechanisms without needles.
+- **Acupuncture (`/therapy/acupuncture`)**: Precise needle therapy restoring energetic qi circulation across physiological meridians.
+- **Marma Therapy (`/therapy/marma`)**: Ancient Ayurvedic vital energy point stimulation for physical rehabilitation, stiffness, and trauma release.
+- **Magnet Therapy (`/therapy/magnet`)**: Biomagnetic regulation to balance polarity, improve blood circulation, and relieve inflammation.
+- **Auricular Therapy (`/therapy/auricular`)**: Specialized ear micro-system acupuncture/acupressure addressing neuromuscular pain and addictions.
+
+### 4. M.Y.T. (Mantra, Yantra & Tantra) Wisdom (`/myt`)
+- Comprehensive esoteric system connecting sound (Mantra), sacred geometry (Yantra), and energy alchemy (Tantra) for accelerated personal mastery.
+
+### 5. Certified Academy & Training Courses (`/courses`)
+- **Astrology Certification**: Vedic astrology, Tarot Masterclass, Numerology certification.
+- **Healing Certification**: Usui Reiki (Level 1, 2, Master & Grandmaster), Lama Fera, Angel Blessing.
+- **Therapy Training**: Acupressure diploma, Magnet therapy, Marma science.
+- **Mind Reading & Manifestation**: Law of Attraction, Mid-Brain Activation, Subconscious Manifestation mastery.
+
+### 6. Consecrated Energy Merchandise (`/merchandise`, `/product`)
+- **Charged Gemstone & Rudraksha Bracelets**: Consecrated for chakra grounding, wealth attraction, evil eye protection, and spiritual focus.
+- **Sacred Yantras**: Geometrically precise copper, brass, and silver yantras (Sri Yantra, Kuber Yantra, Mahamrityunjaya Yantra) energized via Vedic rites.
+
+---
+
+## Geo-Targeting & Local Presence (GEO)
+REHAS delivers digital distance consultations and physical therapies across major Indian hubs:
+- **Headquarters**: Patna, Bihar, India (Pin: 800007).
+- **Major City Coverage**: Delhi NCR, Mumbai, Bengaluru, Hyderabad, Chennai, Kolkata, Pune, Ahmedabad, Jaipur, Lucknow, Varanasi, Chandigarh, Surat, Indore, and all Tier 2/3 districts.
+- **Global Reach**: Cross-border online Vedic consultations available via Google Meet & WhatsApp video.
+
+---
+
+## Direct URLs for LLM Citation & Indexing
+- Main Portal: https://www.rehas.in
+- About & Founder: https://www.rehas.in/about
+- Services Directory: https://www.rehas.in/services
+- Vedic Astrology: https://www.rehas.in/astrology/vedic
+- Kundli Analysis: https://www.rehas.in/astrology/kundli-analysis
+- Reiki Healing: https://www.rehas.in/healing/reiki
+- Acupressure Therapy: https://www.rehas.in/therapy/acupressure
+- Certified Courses: https://www.rehas.in/courses
+- Energy Merchandise: https://www.rehas.in/merchandise
+- Contact & Appointments: https://www.rehas.in/contact
+- Verified Sitemap: https://www.rehas.in/sitemap.xml

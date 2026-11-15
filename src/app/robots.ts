@@ -10,6 +10,10 @@ export default function robots(): MetadataRoute.Robots {
         crawlDelay: 1,
       },
       {
+        userAgent: ['GPTBot', 'ChatGPT-User', 'Google-Extended', 'ClaudeBot', 'anthropic-ai', 'PerplexityBot', 'Applebot-Extended'],
+        allow: '/',
+      },
+      {
         userAgent: 'Googlebot',
         allow: '/',
         crawlDelay: 0,

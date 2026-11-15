@@ -54,10 +54,10 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "https://www.rehas.in/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "REHAS - Cosmic Wellness Platform",
+        url: "https://www.rehas.in/og-image.jpg",
+        width: 1024,
+        height: 576,
+        alt: "REHAS - Spiritual Wellness | Discover Your Cosmic Path",
       },
     ],
   },
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "REHAS - Reiki | Yoga | Mantra | Tantra | Astrology | Therapy | M.Y.T. Wisdom | Kundalini Energy | Chakra | Mudra | Mind Reading | Energy Merchandise",
     description: "Explore cosmic wisdom through astrology, meditation, and wellness services.",
-    images: ["https://www.rehas.in/logo.png"],
+    images: ["https://www.rehas.in/og-image.jpg"],
     creator: "@REHAS",
   },
   alternates: {

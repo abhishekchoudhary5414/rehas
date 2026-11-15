@@ -1,7 +1,7 @@
 # Robots.txt for REHAS Website
 # https://www.rehas.in
 
-# Allow all bots
+# Allow standard search engine crawlers
 User-agent: *
 Allow: /
 Disallow: /admin/
@@ -11,17 +11,44 @@ Disallow: /*.json$
 Disallow: /*?*sort=
 Disallow: /*?*filter=
 
-# Specific rules for Googlebot
+# Explicitly Allow AI & LLM Search Crawlers (AEO / GEO Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Specific rules for Googlebot & Bingbot
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 0
 
-# Specific rules for Bingbot
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# Disallow bad bots
+# Disallow aggressive scraping tools
 User-agent: MJ12bot
 Disallow: /
 
@@ -31,10 +58,12 @@ Disallow: /
 User-agent: SemrushBot
 Disallow: /
 
-# Sitemap location
+# Sitemap & LLM Discovery Locations
 Sitemap: https://www.rehas.in/sitemap.xml
 Sitemap: https://www.rehas.in/sitemap-0.xml
 Sitemap: https://www.rehas.in/sitemap-index.xml
 
-# Cache directive
-Cache-Control: max-age=604800
+# LLM Discovery Directives
+# LLMs.txt: https://www.rehas.in/llms.txt
+# LLMs-full.txt: https://www.rehas.in/llms-full.txt
+
